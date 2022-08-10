@@ -7,7 +7,6 @@ return `*_#Searching_*
  ° ${prefix}yts [query]
  ° ${prefix}google [query]
  ° ${prefix}pinterest [query]
- ° ${prefix}wallpaper [query]
  
 *_#Group_*
  ° ${prefix}linkgroup
@@ -32,7 +31,6 @@ return `*_#Searching_*
  ° ${prefix}instagram [url]
  ° ${prefix}ytmp3 [url]
  ° ${prefix}ytmp4 [url]
- ° ${prefix}mediafire [url]
 
 *_#Converter_*
  ° ${prefix}toimage
@@ -167,8 +165,7 @@ return `*_#Searching_*
  ° ${prefix}play [query]
  ° ${prefix}yts [query]
  ° ${prefix}google [query]
- ° ${prefix}pinterest [query]
- ° ${prefix}wallpaper [query]`
+ ° ${prefix}pinterest [query]`
 }
 
 exports.groubTxT = (prefix) => {
@@ -196,8 +193,7 @@ return `*_#Downloader_*
  ° ${prefix}tiktokmp3 [url]
  ° ${prefix}instagram [url]
  ° ${prefix}ytmp3 [url]
- ° ${prefix}ytmp4 [url]
- ° ${prefix}mediafire [url]`
+ ° ${prefix}ytmp4 [url]`
 }
 
 exports.converterTxT = (prefix) => {
