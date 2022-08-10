@@ -30,7 +30,23 @@ const imgbbUploader = require('imgbb-uploader')
 const moment = require('moment-timezone')
 const speed = require('performance-now')
 const { performance } = require('perf_hooks')
-const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./src/lib/myfunc')
+const { 
+        smsg, 
+        formatp, 
+        tanggal, 
+        formatDate, 
+        getTime, 
+        isUrl, 
+        sleep, 
+        clockString, 
+        runtime, 
+        fetchJson, 
+        getBuffer, 
+        jsonformat, 
+        format, 
+        parseMention, 
+        getRandom
+        } = require('./src/lib/myfunc')
 
 //Scrape
 const hikki = require("hikki-me");
@@ -931,26 +947,16 @@ case prefix+'ytmp4': case prefix+'ytvideo': {
     }
 addCmd(command.slice(1), 1, commund)
    break          
-case prefix+'ytmp3': case prefix+'mp3': {
- if (!text) return reply(`Masukan Link`)
-   reply(mess.wait)
-   let urlnya = text
-   hx.youtube(text).then( data => {
-   elaina.sendMessage(m.chat, { document: { url: data.mp3 }, fileName: `${data.title}.mp3`, mimetype: 'audio/mp3', contextInfo:{externalAdReply:{
-   title:`${data.title}`,
-   body:``,
-   thumbnail: logoyt,
-   mediaType:2,
-   showAdAttribution: true,
-   mediaUrl: `${text}`,
-    sourceUrl: `${text}`
-    }}
-     }, { quoted: m })			      
-	})
-   }
-addCmd(command.slice(1), 1, commund)
-   break  
-			
+ case prefix+'ytmp3': case prefix+'ytaudio': {
+                let { yta } = require('./src/lib/y2mate')
+                if (!text) throw `Contoh : ${prefix + command} https://youtu.be/Cv1Sc4sep9k 320kbps`
+                let quality = args[1] ? args[1] : '128kbps'
+                let media = await yta(text, quality)
+                if (media.filesize >= 999999) return reply('Size Media Terlalu Besar! '+util.format(media))
+                elaina.sendMessage(m.chat, {document: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`}, { quoted : m })
+            }  
+            addCmd(command.slice(1), 1, commund)
+            break         			
 
    case prefix+'tiktok': case prefix+'tiktokdl': case prefix+'ttdl': case prefix+'tiktoknowm': case prefix+'ttnowm': {	 
    if (!text) return reply(`Masukan Link`)
